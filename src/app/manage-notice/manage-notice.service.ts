@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class ManageNoticeService {
 
   url="http://localhost:8080/admin/notices";
+  url2="http://localhost:8080/admin/delete-notice";
 
   constructor(private http:HttpClient) { }
 
@@ -15,5 +16,21 @@ export class ManageNoticeService {
     
     return this.http.get(this.url)
         
+  }
+
+  deleteNotice(id:string){
+    this.http.delete(this.url2,{
+      params: {
+        id: id 
+      }}).subscribe(response=>{
+        if(JSON.parse(JSON.stringify(response)).statusCode==="S1000"){
+          alert("Item is deleted");
+      }
+      else{
+          alert("An unexpected error occurred");
+      }
+    },error=>{
+        alert("An unexpected error occurred");
+    });
   }
 }

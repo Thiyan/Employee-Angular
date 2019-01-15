@@ -1,3 +1,5 @@
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { ConfirmationDialogService } from './confirmation-dialog/confirmation-dialog.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -19,6 +21,10 @@ import {FormsModule} from '@angular/forms'
 import { from } from 'rxjs';
 import { HttpClientModule} from '@angular/common/http';
 import { NgxSpinnerModule} from 'ngx-spinner';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { DialogComponent } from './dialog/dialog.component';
+
 
 
 @NgModule({
@@ -35,16 +41,21 @@ import { NgxSpinnerModule} from 'ngx-spinner';
     AddRoleComponent,
     ManageEmployeeComponent,
     AdminHomeComponent,
-    AddPayrollComponent
+    AddPayrollComponent,
+    ConfirmationDialogComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    NgbModule.forRoot(),
+   
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ConfirmationDialogService,NgbActiveModal],
+  bootstrap: [AppComponent],
+  entryComponents: [ DialogComponent ],
 })
 export class AppModule { }

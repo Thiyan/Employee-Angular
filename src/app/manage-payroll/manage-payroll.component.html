@@ -39,8 +39,8 @@
                                 <td>{{salary.fullAmount}}</td>
                                 <td>{{salary.description}}</td>
                                 <td class="center">
-                                    <a href="Employees/update_employee_form/EJONE6AK" class="btn btn-xs btn-success"><i class="fa fa-pencil"></i></a>
-                                    <a href="employee/Employees/delete_employhistory/EJONE6AK" class="btn btn-xs btn-danger" onclick="return confirm('Are You Sure ? ') "><i class="fa fa-trash"></i></a>
+                                    <a  class="btn btn-xs btn-success"><i class="fa fa-pencil"></i></a>
+                                    <a  class="btn btn-xs btn-danger" (click)="delete(salary.sId)"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                             </tbody>

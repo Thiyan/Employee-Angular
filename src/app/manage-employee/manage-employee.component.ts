@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+// import { MdDialogRef,MdDialog } from '@angular/material';
+import { ConfirmationDialogComponent } from './../confirmation-dialog/confirmation-dialog.component';
+import { ConfirmationDialogService } from './../confirmation-dialog/confirmation-dialog.service';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ManageEmployeeService } from './manage-employee.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 
@@ -7,10 +10,12 @@ import { NgxSpinnerService } from 'ngx-spinner';
   templateUrl: './manage-employee.component.html',
   styleUrls: ['./manage-employee.component.css']
 })
-export class ManageEmployeeComponent implements OnInit {
+export class ManageEmployeeComponent implements OnInit{
 
+  // dialogRef: MdDialogRef<ConfirmationDialogComponent>;
   employees:any[];
-  constructor(private service:ManageEmployeeService,private spinner: NgxSpinnerService) { }
+  constructor(private service:ManageEmployeeService,private spinner: NgxSpinnerService,
+              private confirmationDialogService:ConfirmationDialogService) { }
 
   ngOnInit() {
 
@@ -38,6 +43,26 @@ export class ManageEmployeeComponent implements OnInit {
         alert("An unexpected error occurred");
     });
       
+  }
+
+  // delete(){
+
+  //   console.log("Hello");
+
+  //   this.confirmationDialogService.confirm("Hello","Hello")
+  //   .then((confirmed) => console.log('User confirmed:', confirmed))
+  //   .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+
+    
+  // }
+  delete(id:string){
+    console.log(id);
+    if(window.confirm('Are sure you want to delete this item ?')){
+          console.log(id);
+
+      this.service.delete(id);
+      // this.ngOnInit();
+   }
   }
 
  

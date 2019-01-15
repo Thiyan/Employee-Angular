@@ -35,4 +35,11 @@ export class ManageNoticeComponent implements OnInit {
     
   }
 
+
+  delete(id:string){
+    if(window.confirm('Are sure you want to delete this item ?')){
+      this.service.deleteNotice(id);
+   }
+  }
+
 }
