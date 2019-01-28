@@ -1,6 +1,4 @@
 // import { MdDialogRef,MdDialog } from '@angular/material';
-import { ConfirmationDialogComponent } from './../confirmation-dialog/confirmation-dialog.component';
-import { ConfirmationDialogService } from './../confirmation-dialog/confirmation-dialog.service';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ManageEmployeeService } from './manage-employee.service';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -14,8 +12,7 @@ export class ManageEmployeeComponent implements OnInit{
 
   // dialogRef: MdDialogRef<ConfirmationDialogComponent>;
   employees:any[];
-  constructor(private service:ManageEmployeeService,private spinner: NgxSpinnerService,
-              private confirmationDialogService:ConfirmationDialogService) { }
+  constructor(private service:ManageEmployeeService,private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
 

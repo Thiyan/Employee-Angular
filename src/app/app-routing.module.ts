@@ -1,14 +1,18 @@
-import { AddRoleComponent } from './add-role/add-role.component';
-import { ManageRoleComponent } from './manage-role/manage-role.component';
-import { ManagePayrollComponent } from './manage-payroll/manage-payroll.component';
-import { AddPayrollComponent } from './add-payroll/add-payroll.component';
-import { ManageNoticeComponent } from './manage-notice/manage-notice.component';
-import { AddNoticeComponent } from './add-notice/add-notice.component';
-import { ManageLeaveComponent } from './manage-leave/manage-leave.component';
-import { AddLeaveModelComponent } from './add-leave-model/add-leave-model.component';
-import { ManageEmployeeComponent } from './manage-employee/manage-employee.component';
-import { AddEmployeeComponent } from './add-employee/add-employee.component';
-import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { LeaveRequestComponent } from './employee/leave-request/leave-request.component';
+import { MyAttendanceComponent } from './employee/my-attendance/my-attendance.component';
+import { MySalaryComponent } from './employee/my-salary/my-salary.component';
+import { ManageRoleComponent } from './admin/manage-role/manage-role.component';
+import { AddRoleComponent } from './admin/add-role/add-role.component';
+import { ManagePayrollComponent } from './admin/manage-payroll/manage-payroll.component';
+import { AddPayrollComponent } from './admin/add-payroll/add-payroll.component';
+import { ManageNoticeComponent } from './admin/manage-notice/manage-notice.component';
+import { AddNoticeComponent } from './admin/add-notice/add-notice.component';
+import { ManageLeaveComponent } from './admin/manage-leave/manage-leave.component';
+import { AddLeaveModelComponent } from './admin/add-leave-model/add-leave-model.component';
+import { ManageEmployeeComponent } from './admin/manage-employee/manage-employee.component';
+import { AddEmployeeComponent } from './admin/add-employee/add-employee.component';
+import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { AddAttendanceComponent } from './employee/add-attendance/add-attendance.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 // import {AdminHomeComponent} from '';
@@ -26,7 +30,12 @@ const routes: Routes = [
   {path:"payrolls",component:ManagePayrollComponent},
   {path:"new-role",component:AddRoleComponent},
   {path:"roles",component:ManageRoleComponent},
+  {path:"add-attendance",component:AddAttendanceComponent},
+  {path:"my-salary",component:MySalaryComponent},
+  {path:"my-attendance",component:MyAttendanceComponent},
+  {path:"leave-request",component:LeaveRequestComponent},
   {path:"**",component:AdminHomeComponent}
+  
 ];
 
 @NgModule({

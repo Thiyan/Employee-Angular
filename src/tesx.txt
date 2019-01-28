@@ -1,0 +1,17 @@
+localhost:8080/manager/add-task
+
+{
+	"employess":[{"eId":"9"},{"eId":"10"}],
+	"description":"Sample",
+	"deadLine":"29-JANUARY-2019",
+	"createdBy":{"eId":"9"}
+	
+}
+
+{
+	"requestedBy":{"eId":"10"},
+	"dates":["2019-01-20","2019-01-21"],
+	"reason":"Medical purpose",
+	"checked":"false"
+	
+}
