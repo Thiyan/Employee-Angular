@@ -14,13 +14,12 @@ export class ManageEmployeeService {
   url="http://localhost:8080/admin/employees";
   url2="http://localhost:8080/admin/delete-employees";
 
-  
-
   constructor(private http:HttpClient,private spinner: NgxSpinnerService) { }
 
   getEmployees():Observable<Object>{
 
     this.spinner.show();
+    this.http.get(this.url).subscribe(res=>{console.log(res)});
     return this.http.get(this.url);
     
   }

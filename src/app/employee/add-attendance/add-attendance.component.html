@@ -1,82 +1,296 @@
- <!-- Content Wrapper. Contains page content -->
- <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <section class="content-header">
-      <div class="header-icon"><i class="fa fa-comment"></i></div>
-      <div class="header-title">
-          <h1>Daily Attendance</h1>
-          <small></small>
-      </div>
-  </section>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="header-icon"><i class="fa fa-clock-o"></i></div>
+            <div class="header-title">
+                <h1>Attendance / Home</h1>
+                <small>Attendance List</small>
+            </div>
+        </section>
 
 
-  <!-- Main content -->
-  <!--profile componenent-->
-  <div class="content">
-      <!-- load messages -->
-      <!-- load custom page -->
-      <div class="row">
-          <div class="col-sm-12 col-md-12">
-              <div class="panel panel-bd lobidrag">
-                  <div class="" style="padding: 0px 20px;">
-                      <div class="panel-title">
-                          <h4>Daily Attendance</h4>
-                      </div>
-                  </div>
-                  <div class="panel-body">
+        <!-- Main content -->
+        <div class="content">
+            <!-- load messages -->
+            <!-- load custom page -->
+            <div class="form-group text-right">
+                <button type="button" class="btn btn-primary btn-md" data-target="#add0" data-toggle="modal"  >
+                    <i class="fa fa-clock-o" aria-hidden="true"></i>Check In</button>
+            </div>
 
 
-                      <form  #f="ngForm" (ngSubmit)="onsubmit(f)" enctype="multipart/form-data"  accept-charset="utf-8">
-
-
-                          <!-- <input type="hidden" name="id" value="2" /> -->
-                          <div class="form-group row">
-                            <label for="time" class="col-sm-3 col-form-label">Attendance Time</label>
-                            <div class="col-sm-9">
-                                <select ngModel #time="ngModel" class="" (change)="times($event)">
-                                    <option id="arrival" value="AR">Present</option>
-                                    <option id="departure" value="DP">Absent</option>
-                                </select>
-                            </div>
+            <div id="add0" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header" style="background-color:green;color:white">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <strong> Attendance</strong>
                         </div>
+                        <div class="modal-body">
 
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12">
+                                    <div class="panel ">
+                                        <div class="panel-heading" >
+                                            <div class="panel-title">
+                                                <h4>Check In</h4>
+                                            </div>
+                                        </div>
+                                        <div class="panel-body">
 
-                          <div class="form-group row">
-                              <label for="userid" class="col-sm-3 col-form-label">User Id*</label>
-                              <div class="col-sm-9">
-                                  <input ngModel name="eId" #heading="ngModel" class="form-control" type="text" required placeholder="User Id" id="notice"  >
-                                  <div class="alert alert-danger" *ngIf="heading.touched && !heading.valid">
-                                    <div *ngIf="heading.errors.required">Field is required</div>
-                                 </div>
+                                            <form action="" method="post" accept-charset="utf-8">
+                                                <div class="form-group row">
+                                                    <label for="employee_id" class="col-sm-3 col-form-label">Employee Name *</label>
+                                                    <div class="col-sm-9">
+
+                                                        <select name="employee_id" class="form-control" id="employee_id" style="width:300px">
+                                                            <option value="" selected="selected">Select One...</option>
+                                                            <option value="E0J90LWU">MorneMorkel(E0J90LWU)</option>
+                                                            <option value="EV32UEOH">KarlMarks(EV32UEOH)</option>
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group text-center">
+                                                    <button type="submit" class="btn btn-danger w-md m-b-5" data-dismiss="modal">&times; Cancel</button>
+                                                    <button type="submit" class="btn btn-success w-md m-b-5">Check In</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
-                          </div>
-
-
-                          <div class="form-group row">
-                            <label for="attendance" class="col-sm-3 col-form-label">Attendance</label>
-                            <div class="col-sm-9">
-                                <select ngModel name="blood" class="">
-                                    <option id="present" value="true">Present</option>
-                                    <option id="absent" value="false">Absent</option>
-                                </select>
                             </div>
+
+
+
                         </div>
 
-                          <div class="form-group text-right">
-                              <button type="submit" class="btn btn-success w-md m-b-5">Save</button>
-                              <button type="reset" class="btn btn-primary w-md m-b-5">Reset</button>
-                          </div>
-                      </form>
-                  </div>
-              </div>
-          </div>
-      </div>
+                    </div>
+                    <div class="modal-footer">
 
-  </div> <!-- /.content -->
-  <!--End profile component-->
-<!-- Start Page Lavel Plugins
-=====================================================================-->
+                    </div>
+
+                </div>
+
+            </div>
+            <!--  signout modal start -->
+            <div id="signout" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header" style="background-color:green;color:white">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <strong> Check Out</strong>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12">
+                                    <div class="panel panel-bd">
+
+                                        <div class="panel-body">
+                                            <form action="" method="post" accept-charset="utf-8">
+
+                                                <input name="att_id" id="att_id" type="hidden" value="">
+
+                                                <div class="form-group row">
+
+                                                    <div class="col-sm-9">
+                                                        <input name="sign_in" class=" form-control" type="hidden"  value=""  id="sign_in" readonly="readonly" >
+                                                    </div>
+                                                </div>
 
 
+                                                 <span id="clock" style="font-size: 25px;color:#4b0026;margin-bottom: 50px;"></span>
 
-</div> <!-- /.content -->
+                                                <div class="form-group text-center">
+                                                    <button type="submit" class="btn btn-danger" data-dismiss="modal">&times; Cancel</button>
+                                                    <button type="submit" class="btn btn-primary">Confirm Checkout</button>
+                                                </div>
+
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- signout modal end -->
+            <div class="row">
+                <!--  table area -->
+                <div class="col-sm-12">
+
+                    <div class="panel panel-default thumbnail">
+
+                        <div class="panel-body">
+
+                            <table width="100%" class="datatable table table-striped table-bordered table-hover example">
+                                <caption>Attendance List</caption>
+                                <thead>
+                                <tr>
+                                    <th>SL</th>
+                                    <th>Name</th>
+                                    <th>ID</th>
+                                    <th>Date</th>
+                                    <th>Check In</th>
+                                    <th>Check Out</th>
+                                    <th>Stay</th>
+                                    <th>Action</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <tr class="odd gradeX">
+                                    <td>1</td>
+                                    <td>Morne Morkel</td>
+                                    <td>E0J90LWU</td>
+                                    <td>2018-11-11</td>
+                                    <td>06:14:11 pm</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <a href='#' class='btn btn-success' onclick='signoutmodal(6,"06:14:11 pm")'><i class='fa fa-clock-o' aria-hidden='true'></i> Check Out</a>
+
+
+                                    </td>
+
+                                </tr>
+                                <tr class="even gradeC">
+                                    <td>2</td>
+                                    <td>Mr Sultan</td>
+                                    <td>EOPDQO19</td>
+                                    <td>2018-11-11</td>
+                                    <td>05:59:49 pm</td>
+                                    <td>06:13:48 pm</td>
+                                    <td>00:13:59</td>
+                                    <td>
+                                        Checked Out
+
+                                    </td>
+
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td>3</td>
+                                    <td>Alex test</td>
+                                    <td>EJONE6AK</td>
+                                    <td>2018-11-11</td>
+                                    <td>05:59:30 pm</td>
+                                    <td>06:13:53 pm</td>
+                                    <td>00:14:23</td>
+                                    <td>
+                                        Checked Out
+				 </td>
+
+                                </tr>
+                                <tr class="even gradeC">
+                                    <td>4</td>
+                                    <td>John mickel</td>
+                                    <td>EH1CK9MG</td>
+                                    <td>2018-11-11</td>
+                                    <td>05:59:22 pm</td>
+                                    <td>06:14:01 pm</td>
+                                    <td>00:14:39</td>
+                                    <td>
+                                        Checked Out   </td>
+
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <!-- /.table-responsive -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Start Modal -->
+
+            <script type="text/javascript">
+                function signoutmodal(id,signin){
+                    $("#signout").modal('show');
+                    document.getElementById('att_id').value=id;
+                    document.getElementById('sign_in').value=signin;
+                }
+
+                $(document).ready(function() {
+
+// choose text for the show/hide link - can contain HTML (e.g. an image)
+                    var showText='ADD More';
+                    var hideText='Hide';
+
+// initialise the visibility check
+                    var is_visible = false;
+
+// append show/hide links to the element directly preceding the element with a class of "toggle"
+                    $('.toggle').prev().append(' (<a href="#" class="toggleLink">'+showText+'</a>)');
+
+// hide all of the elements with a class of 'toggle'
+                    $('.toggle').hide();
+
+// capture clicks on the toggle links
+                    $('a.toggleLink').click(function() {
+
+// switch visibility
+                        is_visible = !is_visible;
+
+// change the link depending on whether the element is shown or hidden
+                        $(this).html( (!is_visible) ? showText : hideText);
+
+// toggle the display - uncomment the next line for a basic "accordion" style
+//$('.toggle').hide();$('a.toggleLink').html(showText);
+                        $(this).parent().next('.toggle').toggle('slow');
+
+// return false so any link destination is not followed
+                        return false;
+
+                    });
+                });
+            </script>
+            <script>
+                function checkTime(i) {
+                    if (i < 10) {
+                        i = "0" + i;
+                    }
+                    return i;
+                }
+
+                function startTime() {
+                    // var today = new Date();
+                    // today.setTimezone("Asia/Jakarta");
+                    var indianTimeZoneVal = new Date().toLocaleString('en-US', {timeZone: "Asia/Dhaka"});
+                    var today = new Date(indianTimeZoneVal);
+                    var h = today.getHours();
+                    var m = today.getMinutes();
+                    var s = today.getSeconds();
+                    var ap = "AM";
+                    if (h   > 11) { ap = "PM";             }
+                    if (h   > 12) { h = h - 12;      }
+                    if (h   == 0) { h = 12;             }
+                    if (h   < 10) { h   = "0" + h;   }
+                    if (m < 10) { m = "0" + m; }
+                    if (s < 10) { s = s; }
+
+                    // add a zero in front of numbers<10
+                    m = checkTime(m);
+                    s = checkTime(s);
+                    document.getElementById('clock').innerHTML = h + ":" + m + ":" + s + " " + ap;
+                    t = setTimeout(function() {
+                        startTime()
+                    }, 500);
+                }
+                startTime();
+            </script>
+        </div> <!-- /.content -->
+
+
+    </div> <!-- /.content-wrapper -->

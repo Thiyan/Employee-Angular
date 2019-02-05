@@ -1,0 +1,110 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="header-icon"><i class="fa fa-users"></i></div>
+        <div class="header-title">
+            <h1>Leave requests</h1>
+            <small></small>
+        </div>
+    </section>
+
+
+    <!-- Main content -->
+    <!--profile componenent-->
+    <div class="content">
+        <!-- load messages -->
+        <!-- load custom page -->
+        <div class="row">
+               <!--  table area -->
+               <div class="col-sm-12">
+
+                <div class="panel panel-default thumbnail">
+
+                    <div class="panel-body table-responsive">
+                        <table width="100%" class="datatable table table-striped table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>SL No</th>
+                                <th>Requester</th>
+                                <th>Date</th>
+                                <th>Reason</th>
+                                <th>Requested Date</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let request of requests" class="odd gradeX">
+                                <td>1</td>
+                                <td>{{request.requestedBy.fName}}</td>
+                                <td>{{request.date}}</td>
+                                <td>{{request.reason}}</td>
+                                <td>{{request.requestedDate}}</td>
+                                
+                                
+
+
+                             <td class="center">
+                                    <a  class="btn btn-xs btn-success"><i class="fa fa-pencil"></i></a>
+                                    <button routerLink="/employees" class="btn btn-xs btn-danger" (click)="delete(employee.eId)"><i class="fa fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>  <!-- /.table-responsive -->
+                    </div>
+                </div>
+            </div>
+
+
+               <!--  table area -->
+               <div class="col-sm-12">
+
+                <div class="panel panel-default thumbnail">
+
+                    <div class="panel-body table-responsive">
+                        <table width="100%" class="datatable table table-striped table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>SL No</th>
+                                <th>Requester</th>
+                                <th>Date</th>
+                                <th>Reason</th>
+                                <th>Requested Date</th>
+                                <th>Approval</th>
+                                <th>Reply</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let reply of replies" class="odd gradeX">
+                                <td>1</td>
+                                <td>{{reply.requestedBy.fName}}</td>
+                                <td>{{reply.date}}</td>
+                                <td>{{reply.reason}}</td>
+                                <td>{{reply.requestedDate}}</td>
+                                <td *ngIf="reply.approved">Approved</td>
+                                <td *ngIf="!reply.approved">Not Approved</td>
+
+                                <td>{{reply.reply}}</td>
+                                
+
+
+                             <!--<td class="center">-->
+                                    <!--<a  class="btn btn-xs btn-success"><i class="fa fa-pencil"></i></a>-->
+                                    <!--<button routerLink="/employees" class="btn btn-xs btn-danger" (click)="delete(employee.eId)"><i class="fa fa-trash"></i></button>-->
+                                <!--</td>-->
+                            </tr>
+                            </tbody>
+                        </table>  <!-- /.table-responsive -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- /.content -->
+    <!--End profile component-->
+<!-- Start Page Lavel Plugins
+=====================================================================-->
+
+
+
+</div> <!-- /.content -->

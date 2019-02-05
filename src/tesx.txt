@@ -15,3 +15,15 @@ localhost:8080/manager/add-task
 	"checked":"false"
 	
 }
+
+{
+	"requestedBy":{"eId":"10"},
+	"date":"2019-02-20",
+	"reason":"Medical purpose",
+	"checked":"false"
+	
+}
+
+http://localhost:8080/manager/my-reply?id=Arumugam201
+
+http://localhost:8080/manager/requests

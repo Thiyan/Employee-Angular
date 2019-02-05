@@ -1,3 +1,8 @@
+import { ReplyComponent } from './employee/reply/reply.component';
+import { MyTaskComponent } from './employee/my-task/my-task.component';
+import { AddTaskComponent } from './employee/add-task/add-task.component';
+import { SideBarComponent } from './admin/side-bar/side-bar.component';
+import { EmployeeNavBarComponent } from './employee/employee-nav-bar/employee-nav-bar.component';
 import { LeaveRequestComponent } from './employee/leave-request/leave-request.component';
 import { MyAttendanceComponent } from './employee/my-attendance/my-attendance.component';
 import { MySalaryComponent } from './employee/my-salary/my-salary.component';
@@ -19,7 +24,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { from } from 'rxjs';
 
 const routes: Routes = [
-  {path:"",component:AdminHomeComponent},
+  {path:"",component:AdminHomeComponent,},
+  {path:"add-attendance",component:AddAttendanceComponent},
+  {path:"my-salary",component:MySalaryComponent},
+  {path:"my-attendance",component:MyAttendanceComponent},
+  {path:"leave-request",component:LeaveRequestComponent},
+  {path:"add-task",component:AddTaskComponent}, 
+  {path:"my-task",component:MyTaskComponent},
+  {path:"leave-request",component:LeaveRequestComponent},
+  {path:"reply",component:ReplyComponent},
+  // {path:"admin",component:SideBarComponent},
   {path:"new-employee",component:AddEmployeeComponent},
   {path:"employees",component:ManageEmployeeComponent},
   {path:"new-leave-model",component:AddLeaveModelComponent},
@@ -30,10 +44,6 @@ const routes: Routes = [
   {path:"payrolls",component:ManagePayrollComponent},
   {path:"new-role",component:AddRoleComponent},
   {path:"roles",component:ManageRoleComponent},
-  {path:"add-attendance",component:AddAttendanceComponent},
-  {path:"my-salary",component:MySalaryComponent},
-  {path:"my-attendance",component:MyAttendanceComponent},
-  {path:"leave-request",component:LeaveRequestComponent},
   {path:"**",component:AdminHomeComponent}
   
 ];

@@ -68,14 +68,17 @@
 
                       <!-- single level menu/link -->
                       <li class="">
-                          <a routerLink="/new-employee">Add Employee</a>
+                          <!-- <a routerLink="/new-employee">Add Employee</a> -->
+                          <a (click)=newEmployee()>Add Employee</a>
+
                       </li>
 
                       <!-- endforeach -->
 
                       <!-- single level menu/link -->
                       <li class="">
-                          <a routerLink="/employees">Manage Employee</a>
+                          <!-- <a routerLink="/employees">Manage Employee</a> -->
+                          <a (click)="manageEmployee()">Manage Employee</a>
                       </li>
 
                       <!-- endforeach -->
@@ -206,6 +209,8 @@
           </ul>
       </div> <!-- /.sidebar -->            
     </aside>
+    <router-outlet></router-outlet>
+
 
  
 

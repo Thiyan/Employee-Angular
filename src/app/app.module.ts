@@ -30,7 +30,10 @@ import { MySalaryComponent } from './employee/my-salary/my-salary.component';
 import { MyAttendanceComponent } from './employee/my-attendance/my-attendance.component';
 import { MyLeaveComponent } from './employee/my-leave/my-leave.component';
 import { LeaveRequestComponent } from './employee/leave-request/leave-request.component';
+import { EmployeeNavBarComponent } from './employee/employee-nav-bar/employee-nav-bar.component';
 import { AddTaskComponent } from './employee/add-task/add-task.component';
+import { MyTaskComponent } from './employee/my-task/my-task.component';
+import { ReplyComponent } from './employee/reply/reply.component';
 
 
 
@@ -56,7 +59,10 @@ import { AddTaskComponent } from './employee/add-task/add-task.component';
     MyAttendanceComponent,
     MyLeaveComponent,
     LeaveRequestComponent,
-    AddTaskComponent
+    EmployeeNavBarComponent,
+    AddTaskComponent,
+    MyTaskComponent,
+    ReplyComponent
   ],
   imports: [
     BrowserModule,
