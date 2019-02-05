@@ -45,8 +45,8 @@
 
 
                              <td class="center">
-                                    <a  class="btn btn-xs btn-success"><i class="fa fa-pencil"></i></a>
-                                    <button routerLink="/employees" class="btn btn-xs btn-danger" (click)="delete(employee.eId)"><i class="fa fa-trash"></i></button>
+                               <!-- Trigger the modal with a button -->
+                               <button (click)="giveReply(request)" type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Reply</button>
                                 </td>
                             </tr>
                             </tbody>
@@ -99,6 +99,56 @@
                 </div>
             </div>
         </div>
+
+      <!-- Modal -->
+      <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+              <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+              <form  #f="ngForm" (ngSubmit)="onsubmit(f)" enctype="multipart/form-data"  accept-charset="utf-8">
+
+
+                <!-- <input type="hidden" name="id" value="2" /> -->
+
+                <div class="form-group row">
+                  <label for="reply" class="col-sm-3 col-form-label">Reply*</label>
+                  <div class="col-sm-9">
+                    <input ngModel name="reply" #reply="ngModel" class="form-control" type="text" required placeholder="Reply" id="notice"  >
+                    <div class="alert alert-danger" *ngIf="reply.touched && !reply.valid">
+                      <div *ngIf="reply.errors.required">Field is required</div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="form-group row">
+                  <label for="approval" class="col-sm-3 col-form-label">Approval</label>
+                  <div class="col-sm-9">
+                    <select ngModel name="approved" class="">
+                      <option  value="false">Not Approved</option>
+                      <option value="true">Approved-</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group text-right">
+                  <button type="submit" class="btn btn-success w-md m-b-5">Save</button>
+                  <button type="reset" class="btn btn-primary w-md m-b-5">Reset</button>
+                </div>
+              </form>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
 
     </div> <!-- /.content -->
     <!--End profile component-->
