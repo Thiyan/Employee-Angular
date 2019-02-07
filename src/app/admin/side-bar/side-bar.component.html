@@ -17,7 +17,7 @@
                       <ul class="dropdown-menu">
                           <li><a href="dashboard/home/setting"><i
                                   class="fa fa-cog"></i> Setting</a></li>
-                          <li><a href="/logout"><i class="fa fa-sign-out"></i> Logout</a>
+                          <li><a (click)="logout()"><i class="fa fa-sign-out"></i> Logout</a>
                           </li>
                       </ul>
                   </li>
@@ -39,7 +39,7 @@
                        alt="User Image">
               </div>
               <div class="info">
-                  <p>Jhon Doe</p>
+                  <p>{{name}}</p>
                   <a href="#"><i class="fa fa-circle text-success"></i> Admin</a>
               </div>
           </div>
@@ -68,8 +68,8 @@
 
                       <!-- single level menu/link -->
                       <li class="">
-                          <!-- <a routerLink="/new-employee">Add Employee</a> -->
-                          <a (click)=newEmployee()>Add Employee</a>
+                           <a routerLink="/new-employee">Add Employee</a>
+                          <!--<a (click)=newEmployee()>Add Employee</a>-->
 
                       </li>
 
@@ -77,8 +77,8 @@
 
                       <!-- single level menu/link -->
                       <li class="">
-                          <!-- <a routerLink="/employees">Manage Employee</a> -->
-                          <a (click)="manageEmployee()">Manage Employee</a>
+                           <a routerLink="/employees">Manage Employee</a>
+                          <!--<a (click)="manageEmployee()">Manage Employee</a>-->
                       </li>
 
                       <!-- endforeach -->
@@ -206,10 +206,31 @@
                       <!-- endforeach -->
                   </ul>
               </li>
+
+
+            <li class="treeview ">
+
+                  <a href="javascript:void(0)">
+                      <i class='fa fa-credit-card'></i> <span>Attendance</span>
+                      <span class="pull-right-container">
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </span>
+                  </a>
+
+                  <ul class="treeview-menu">
+                      <!-- endforeach -->
+
+                      <!-- single level menu/link -->
+                      <li class="">
+                          <a routerLink="/add-attendance">Add Attendance</a>
+                      </li>
+
+
+                  </ul>
+              </li>
           </ul>
       </div> <!-- /.sidebar -->            
     </aside>
-    <router-outlet></router-outlet>
 
 
  

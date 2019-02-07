@@ -1,15 +1,17 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import {host} from './../../models/conf';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AddPayrollModelService {
 
-  url="http://localhost:8080/admin/salary-model";
+  url = 'http://' + host + ':8080/admin/salary-model';
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -18,22 +20,21 @@ export class AddPayrollModelService {
     })
   };
 
-  addPayrollModel(f:NgForm){
+  addPayrollModel(f: NgForm) {
     console.log(f.value);
-    this.http.post(this.url,JSON.stringify(f.value),this.httpOptions)
-    .subscribe(response=>{
+    this.http.post(this.url, JSON.stringify(f.value), this.httpOptions)
+    .subscribe(response => {
 
-      if(JSON.parse(JSON.stringify(response)).statusCode==="S1000"){
-        alert("Payroll model added successfully!");
+      if (JSON.parse(JSON.stringify(response)).statusCode === 'S1000') {
+        alert('Payroll model added successfully!');
         f.reset();
-      }
-      else{
+      } else {
         alert(JSON.parse(JSON.stringify(response)).statusDescription);
       }
-      console.log(response)
+      console.log(response);
 
-    },error=>{
-      alert("An unexpected error occurred");
+    }, error => {
+      alert('An unexpected error occurred');
 
     });
 

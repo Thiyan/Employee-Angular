@@ -1,22 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import {host} from './../../models/conf';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class MyTaskService {
 
-  
-  url="http://localhost:8080/my-task";
 
-  constructor(private http:HttpClient) { }
+  url = 'http://' + host + ':8080/my-task';
 
-  getTasks():Observable<Object>{
-    
-    return this.http.get(this.url,{
+  constructor(private http: HttpClient) { }
+
+  getTasks(): Observable<Object> {
+
+    return this.http.get(this.url, {
       params: {
-        id: 'Arumugam201' 
+        id: localStorage.getItem('id')
       }});
   }
 }

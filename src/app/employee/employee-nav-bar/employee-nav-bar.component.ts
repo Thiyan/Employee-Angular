@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-employee-nav-bar',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeNavBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
+  name = localStorage.getItem('name');
 
   ngOnInit() {
+  }
+
+  logout() {
+    localStorage.removeItem('login');
+    localStorage.removeItem('role');
+    localStorage.removeItem('name');
+    localStorage.removeItem('id');
+    localStorage.removeItem('number');
+
+    this.router.navigate(['']);
+
   }
 
 }

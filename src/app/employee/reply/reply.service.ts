@@ -1,16 +1,17 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import {NgForm} from '@angular/forms';
+import {host} from './../../models/conf';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReplyService {
 
-  url = 'http://localhost:8080/manager/requests';
-  url2 = 'http://localhost:8080/manager/my-reply';
-  url3 = 'http://localhost:8080/manager/add-reply';
+  url = 'http://' + host + ':8080/manager/requests';
+  url2 = 'http://' + host + ':8080/manager/my-reply';
+  url3 = 'http://' + host + ':8080/manager/add-reply';
 
   constructor(private http: HttpClient) { }
 
@@ -24,9 +25,10 @@ export class ReplyService {
 
   getReplies(): Observable<Object> {
 
+    console.log(host);
     return this.http.get(this.url2, {
       params: {
-        id: 'Arumugam201'
+        id: localStorage.getItem('id')
       }});
 
   }

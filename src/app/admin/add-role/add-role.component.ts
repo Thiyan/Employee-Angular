@@ -14,7 +14,8 @@ export class AddRoleComponent implements OnInit {
   ngOnInit() {
   }
 
-  onsubmit(f:NgForm){
+  onsubmitRole(f:NgForm){
+    console.log("hasjk");
     console.log(f.value);
 
     if(f.valid){

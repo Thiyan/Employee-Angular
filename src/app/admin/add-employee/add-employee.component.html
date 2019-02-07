@@ -85,9 +85,10 @@
                                 <div class="form-group row">
                                         <label for="email" class="col-sm-3 col-form-label">Email Address *</label>
                                         <div class="col-sm-9">
-                                            <input ngModel name="email" #email="ngModel" required class="form-control" type="text" placeholder="Email Address" id="email" value="">
+                                            <input ngModel name="email" #email="ngModel" required class="form-control" type="email" email placeholder="Email Address">
                                             <div class="alert alert-danger" *ngIf="email.touched && !email.valid">
                                                 <div *ngIf="email.errors.required">Field is required</div>
+                                                <div *ngIf="email.errors.email">Not a valid email</div>
                                              </div>
                                         </div>
                                     </div>

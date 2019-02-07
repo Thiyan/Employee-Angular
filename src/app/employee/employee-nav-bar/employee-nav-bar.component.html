@@ -15,9 +15,9 @@
               <li class="dropdown dropdown-user">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-cogs"></i></a>
                   <ul class="dropdown-menu">
-                      <li><a href="dashboard/home/setting"><i
+                      <li><a routerLink="/settings"><i
                               class="fa fa-cog"></i> Setting</a></li>
-                      <li><a href="/logout"><i class="fa fa-sign-out"></i> Logout</a>
+                      <li><button (click)="logout()"><i class="fa fa-sign-out"></i> Logout</button>
                       </li>
                   </ul>
               </li>
@@ -39,7 +39,7 @@
                    alt="User Image">
           </div>
           <div class="info">
-              <p>Jhon Doe</p>
+              <p>{{name}}</p>
               <a href="#"><i class="fa fa-circle text-success"></i> Employee</a>
           </div>
       </div>
@@ -66,16 +66,11 @@
               <ul class="treeview-menu">
                   <!-- endforeach -->
 
-                  <!-- single level menu/link -->
-                  <li class="">
-                      <a routerLink="/new-employee">Mark</a>
-                  </li>
-
                   <!-- endforeach -->
 
                   <!-- single level menu/link -->
                   <li class="">
-                      <a routerLink="/employees">My Attendence</a>
+                      <a routerLink="my-attendance">My Attendence</a>
                   </li>
 
                   <!-- endforeach -->
@@ -98,17 +93,12 @@
 
                   <!-- single level menu/link -->
                   <li class="">
-                      <a routerLink="/new-leave-model">Leave Request</a>
+                      <a routerLink="/leave-request">Leave Request</a>
                   </li>
 
                   <!-- endforeach -->
 
-                  <!-- single level menu/link -->
-                  <li class="">
-                      <a routerLink="/leave-models">My Leaves</a>
-                  </li>
 
-                  <!-- endforeach -->
               </ul>
           </li>
           <!-- end if -->
@@ -160,7 +150,7 @@
 
                   <!-- single level menu/link -->
                   <li class="">
-                      <a routerLink="/new-payroll">My Payroll</a>
+                      <a routerLink="/my-salary">My Payroll</a>
                   </li>
 
                   <!-- endforeach -->
@@ -190,7 +180,7 @@
 
                   <!-- single level menu/link -->
                   <li class="">
-                      <a routerLink="/new-role">My Task</a>
+                      <a routerLink="/my-task">My Task</a>
                   </li>
 
                   <!-- endforeach -->

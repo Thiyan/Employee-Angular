@@ -11,48 +11,46 @@ import { NgForm } from '@angular/forms';
 })
 export class AddTaskComponent implements OnInit {
 
-  employees:any[];
-  constructor(private service:ManageEmployeeService,private taskService:AddTaskService,private spinner: NgxSpinnerService) { }
+  employees: any[];
+  constructor(private service: ManageEmployeeService, private taskService: AddTaskService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
 
     this.service.getEmployees()
-    .subscribe(response=>{
+    .subscribe(response => {
 
       this.spinner.hide();
-      if(JSON.parse(JSON.stringify(response)).statusCode==="S1000"){
-        this.employees=JSON.parse(JSON.stringify(response))['content'];
+      if (JSON.parse(JSON.stringify(response)).statusCode === 'S1000') {
+        this.employees = JSON.parse(JSON.stringify(response))['content'];
         console.log(this.employees);
         return this.employees;
-      }
-      else{
+      } else {
         // alert(JSON.parse(JSON.stringify(response)).statusDescription);
         console.log(JSON.parse(JSON.stringify(response))['statusDescription']);
 
-        if(JSON.parse(JSON.stringify(response)).statusCode==="E1003"){
-          alert("No results Found");
-        }
-        else{
-          alert("An unexpected error occurred");
+        if (JSON.parse(JSON.stringify(response)).statusCode === 'E1003') {
+          alert('No results Found');
+        } else {
+          alert('An unexpected error occurred');
         }
       }
-    },error=>{
-        alert("An unexpected error occurred");
+    }, error => {
+        alert('An unexpected error occurred');
     });
   }
 
 
-  submit(f:NgForm){
+  submit(f: NgForm) {
 
     console.log(f.value);
 
-    let task={
-          'employee':f.value.employee,
-          'deadLine':f.value.deadLine,
-          'description':f.value.description,
-          'createdBy':{'eId':'9'}
-    }
-    
+    const task = {
+          'employee': f.value.employee,
+          'deadLine': f.value.deadLine,
+          'description': f.value.description,
+          'createdBy': {'eId': localStorage.getItem('number')}
+    };
+
     console.log(task);
     this.taskService.addTask(task);
     f.reset();

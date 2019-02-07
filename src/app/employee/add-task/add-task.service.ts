@@ -1,15 +1,17 @@
 import { NgForm } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import {host} from './../../models/conf';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AddTaskService {
 
-  url="http://localhost:8080/manager/add-task";
+  url = 'http://' + host + ':8080/manager/add-task';
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -19,20 +21,19 @@ export class AddTaskService {
   };
 
 
-  addTask(task){
-    this.http.post(this.url,JSON.stringify(task),this.httpOptions)
-    .subscribe(response=>{
+  addTask(task) {
+    this.http.post(this.url, JSON.stringify(task), this.httpOptions)
+    .subscribe(response => {
 
       console.log(response);
-      if(JSON.parse(JSON.stringify(response)).statusCode==="S1000"){
-        alert("Task added successfully!");
-      }
-      else{
+      if (JSON.parse(JSON.stringify(response)).statusCode === 'S1000') {
+        alert('Task added successfully!');
+      } else {
         alert(JSON.parse(JSON.stringify(response)).statusDescription);
       }
       console.log(response);
-    },error=>{
-      alert("An unexpected error occurred");
+    }, error => {
+      alert('An unexpected error occurred');
 
     });
 

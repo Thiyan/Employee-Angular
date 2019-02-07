@@ -2,15 +2,17 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { error } from 'util';
+import {host} from './../../models/conf';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AddLeaveModelService {
 
-  url="http://localhost:8080/admin/leave-model";
+  url = 'http://' + host + ':8080/admin/leave-model';
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -19,22 +21,21 @@ export class AddLeaveModelService {
     })
   };
 
-  addLeaveModel(f:NgForm){
+  addLeaveModel(f: NgForm) {
     console.log(f.value);
-    this.http.post(this.url,JSON.stringify(f.value),this.httpOptions)
-    .subscribe(response=>{
+    this.http.post(this.url, JSON.stringify(f.value), this.httpOptions)
+    .subscribe(response => {
 
       console.log(response);
-      if(JSON.parse(JSON.stringify(response)).statusCode==="S1000"){
-        alert("Leave model added successfully!");
+      if (JSON.parse(JSON.stringify(response)).statusCode === 'S1000') {
+        alert('Leave model added successfully!');
         f.reset();
-      }
-      else{
+      } else {
         alert(JSON.parse(JSON.stringify(response)).statusDescription);
       }
       console.log(response);
-    },error=>{
-      alert("An unexpected error occurred");
+    }, error => {
+      alert('An unexpected error occurred');
 
     });
 

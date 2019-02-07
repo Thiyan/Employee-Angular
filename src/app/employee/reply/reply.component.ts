@@ -72,7 +72,7 @@ this.service.getReplies()
       'date': this.reply.date,
       'reason': this.reply.reason,
       'checked': true,
-      'approvedBy': {'eId': 9},
+      'approvedBy': {'eId': localStorage.getItem('number')},
       'approved': f.value.approved,
       'reply': f.value.reply,
       'valid': this.reply.valid

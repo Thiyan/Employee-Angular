@@ -9,7 +9,8 @@ import { Routes, Router, ActivatedRoute } from '@angular/router';
 })
 export class SideBarComponent implements OnInit {
 
-  constructor(private router:Router,private route:ActivatedRoute) { }
+  name = localStorage.getItem('name');
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
@@ -30,5 +31,15 @@ export class SideBarComponent implements OnInit {
   //   this.router.navigate(['employees'],{relativeTo:this.route});
   // }
 
+  logout() {
+    localStorage.removeItem('login');
+    localStorage.removeItem('role');
+    localStorage.removeItem('name');
+    localStorage.removeItem('id');
+    localStorage.removeItem('number');
+
+    this.router.navigate(['']);
+
+  }
 
 }

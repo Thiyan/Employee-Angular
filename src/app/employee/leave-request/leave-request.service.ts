@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
-
+import {host} from './../../models/conf';
 
 
 @Injectable({
@@ -11,11 +11,11 @@ import { Observable } from 'rxjs';
 })
 export class LeaveRequestService {
 
-  url="http://localhost:8080/add-request";
-  url2="http://localhost:8080/my-requests";
-  // url2="http://localhost:8080/admin/delete-notice";
+  url = 'http://' + host + ':8080/add-request';
+  url2 = 'http://' + host + ':8080/my-requests';
+  // url2="http://' + host + ':8080/admin/delete-notice";
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -24,45 +24,44 @@ export class LeaveRequestService {
     })
   };
 
-  addLeaveRequest(f:NgForm){
+  addLeaveRequest(f: NgForm) {
 
     // let employee=new Employee("9");
     // console.log(employee.eId);
     // let date:string[]=new Array("2019-01-20","2019-01-21");
 
 
-    let request={'requestedBy':{'eId':9},
-              'date':f.value.date,
-              'reason':f.value.reason,
-              'checked':false};
+    const request = {'requestedBy': {'eId': localStorage.getItem('number')},
+              'date': f.value.date,
+              'reason': f.value.reason,
+              'checked': false};
 
     console.log(request);
 
-    this.http.post(this.url,JSON.stringify(request),this.httpOptions)
-    .subscribe(response=>{
+    this.http.post(this.url, JSON.stringify(request), this.httpOptions)
+    .subscribe(response => {
 
       console.log(response);
-      if(JSON.parse(JSON.stringify(response)).statusCode==="S1000"){
-        alert("Leave request added successfully!");
+      if (JSON.parse(JSON.stringify(response)).statusCode === 'S1000') {
+        alert('Leave request added successfully!');
         f.reset();
-      }
-      else{
-        alert("An unexpected error occurred");
+      } else {
+        alert('An unexpected error occurred');
       }
       console.log(response);
-    },error=>{
-      alert("An unexpected error occurred");
+    }, error => {
+      alert('An unexpected error occurred');
 
     });
 
   }
 
-  getRequests():Observable<Object>{
-    
-    return this.http.get(this.url2,{
-      params:{
-        id:"Arumugam201"
+  getRequests(): Observable<Object> {
+
+    return this.http.get(this.url2, {
+      params: {
+        id: localStorage.getItem('id')
       }});
-        
+
   }
 }

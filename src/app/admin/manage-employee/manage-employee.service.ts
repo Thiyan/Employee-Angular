@@ -5,39 +5,40 @@ import { Observable } from 'rxjs';
 import {catchError, map, tap} from 'rxjs/operators';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { url } from 'inspector';
+import {host} from './../../models/conf';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ManageEmployeeService {
 
-  url="http://localhost:8080/admin/employees";
-  url2="http://localhost:8080/admin/delete-employees";
+  url = 'http://' + host + ':8080/admin/employees';
+  url2 = 'http://l' + host + ':8080/admin/delete-employees';
 
-  constructor(private http:HttpClient,private spinner: NgxSpinnerService) { }
+  constructor(private http: HttpClient, private spinner: NgxSpinnerService) { }
 
-  getEmployees():Observable<Object>{
+  getEmployees(): Observable<Object> {
 
-    this.spinner.show();
-    this.http.get(this.url).subscribe(res=>{console.log(res)});
+    // this.spinner.show();
+    this.http.get(this.url).subscribe(res => {console.log(res); });
     return this.http.get(this.url);
-    
+
   }
 
-  delete(id:string){
-    this.http.delete(this.url2,{
+  delete(id: string) {
+    this.http.delete(this.url2, {
       params: {
-        id: id 
-      }}).subscribe(response=>{
-        if(JSON.parse(JSON.stringify(response)).statusCode==="S1000"){
-          alert("Item is deleted");
+        id: id
+      }}).subscribe(response => {
+        if (JSON.parse(JSON.stringify(response)).statusCode === 'S1000') {
+          alert('Item is deleted');
+      } else {
+          alert('An unexpected error occurred');
       }
-      else{
-          alert("An unexpected error occurred");
-      }
-    },error=>{
-        alert("An unexpected error occurred");
+    }, error => {
+        alert('An unexpected error occurred');
     });
   }
-  
+
 }

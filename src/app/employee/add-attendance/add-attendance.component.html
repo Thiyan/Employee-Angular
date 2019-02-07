@@ -39,18 +39,33 @@
                                         </div>
                                         <div class="panel-body">
 
-                                            <form action="" method="post" accept-charset="utf-8">
+                                            <form  #f="ngForm" (ngSubmit)="onsubmit(f)" enctype="multipart/form-data"  accept-charset="utf-8">
                                                 <div class="form-group row">
                                                     <label for="employee_id" class="col-sm-3 col-form-label">Employee Name *</label>
                                                     <div class="col-sm-9">
 
-                                                        <select name="employee_id" class="form-control" id="employee_id" style="width:300px">
-                                                            <option value="" selected="selected">Select One...</option>
-                                                            <option value="E0J90LWU">MorneMorkel(E0J90LWU)</option>
-                                                            <option value="EV32UEOH">KarlMarks(EV32UEOH)</option>
+                                                        <select ngModel #employee="ngModel" name="employee" class="form-control"  style="width:300px">
+                                                          <option  *ngFor="let employee of employees" [ngValue]="employee">{{employee.userId}}</option>
                                                         </select>
 
+                                                      <div class="alert alert-danger" *ngIf="employee.touched && !employee.valid">
+                                                        <div *ngIf="employee.errors.required">Field is required</div>
+                                                      </div>
                                                     </div>
+                                                </div>
+
+                                              <div class="form-group row">
+                                                    <label f class="col-sm-3 col-form-label">Attendance *</label>
+                                                    <div class="col-sm-9">
+                                                      <select ngModel #attendance="ngModel" name="attendance" class="form-control" id="employee_id" style="width:300px">
+                                                        <option value="true">Present</option>
+                                                        <option value="false">Absent</option>
+                                                      </select>
+
+                                                    </div>
+                                                <div class="alert alert-danger" *ngIf="attendance.touched && !attendance.valid">
+                                                  <div *ngIf="attendance.errors.required">Field is required</div>
+                                                </div>
                                                 </div>
                                                 <div class="form-group text-center">
                                                     <button type="submit" class="btn btn-danger w-md m-b-5" data-dismiss="modal">&times; Cancel</button>
@@ -104,7 +119,7 @@
                                                  <span id="clock" style="font-size: 25px;color:#4b0026;margin-bottom: 50px;"></span>
 
                                                 <div class="form-group text-center">
-                                                    <button type="submit" class="btn btn-danger" data-dismiss="modal">&times; Cancel</button>
+                                                    <button type="reset" class="btn btn-danger" data-dismiss="modal">&times; Cancel</button>
                                                     <button type="submit" class="btn btn-primary">Confirm Checkout</button>
                                                 </div>
 
@@ -142,69 +157,36 @@
                                     <th>Name</th>
                                     <th>ID</th>
                                     <th>Date</th>
+                                    <th>Attendance</th>
                                     <th>Check In</th>
                                     <th>Check Out</th>
-                                    <th>Stay</th>
+                                    <th>Pay</th>
                                     <th>Action</th>
 
                                 </tr>
                                 </thead>
                                 <tbody>
 
-                                <tr class="odd gradeX">
+                                <tr *ngFor="let attendance of attendances" class="odd gradeX">
                                     <td>1</td>
-                                    <td>Morne Morkel</td>
-                                    <td>E0J90LWU</td>
-                                    <td>2018-11-11</td>
-                                    <td>06:14:11 pm</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <a href='#' class='btn btn-success' onclick='signoutmodal(6,"06:14:11 pm")'><i class='fa fa-clock-o' aria-hidden='true'></i> Check Out</a>
-
-
+                                    <td>{{attendance.employee.fName}}</td>
+                                    <td>{{attendance.employee.userId}}</td>
+                                    <td>{{attendance.date}}</td>
+                                    <td *ngIf="attendance.attendance">Present</td>
+                                    <td *ngIf="!attendance.attendance">Absent</td>
+                                    <td>{{attendance.arrival}}</td>
+                                    <td>{{attendance.departure}}</td>
+                                  <td *ngIf="attendance.attType===null">Not yet</td>
+                                  <td *ngIf="attendance.attType==='HF'">Half day</td>
+                                  <td *ngIf="attendance.attType==='FL'">Full day</td>
+                                  <td *ngIf="attendance.attType==='AB'">Absent</td>
+                                    <td *ngIf="attendance.attType===null && attendance.attendance">
+                                        <a class='btn btn-success' (click)="checkout(attendance)">
+                                          <i class='fa fa-clock-o' aria-hidden='true'></i>Check Out</a>
                                     </td>
 
                                 </tr>
-                                <tr class="even gradeC">
-                                    <td>2</td>
-                                    <td>Mr Sultan</td>
-                                    <td>EOPDQO19</td>
-                                    <td>2018-11-11</td>
-                                    <td>05:59:49 pm</td>
-                                    <td>06:13:48 pm</td>
-                                    <td>00:13:59</td>
-                                    <td>
-                                        Checked Out
 
-                                    </td>
-
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>3</td>
-                                    <td>Alex test</td>
-                                    <td>EJONE6AK</td>
-                                    <td>2018-11-11</td>
-                                    <td>05:59:30 pm</td>
-                                    <td>06:13:53 pm</td>
-                                    <td>00:14:23</td>
-                                    <td>
-                                        Checked Out
-				 </td>
-
-                                </tr>
-                                <tr class="even gradeC">
-                                    <td>4</td>
-                                    <td>John mickel</td>
-                                    <td>EH1CK9MG</td>
-                                    <td>2018-11-11</td>
-                                    <td>05:59:22 pm</td>
-                                    <td>06:14:01 pm</td>
-                                    <td>00:14:39</td>
-                                    <td>
-                                        Checked Out   </td>
-
-                                </tr>
                                 </tbody>
                             </table>
 
